@@ -59,8 +59,6 @@ img1 = ImageDraw.Draw(img)
 
 # get a font
 myFont = ImageFont.truetype("arialbd.ttf", 20, )
-#myFont.set_variation_by_name('Bold')
-
 
 # draw surrounding rectangle
 shape = [(start_x, start_y), (start_x + mzn_width * pixel_unit, start_y + mzn_height * pixel_unit)]
@@ -80,12 +78,9 @@ for i in range(1,n+1):
     img1.text((center_x - w / 2, center_y - h / 2), msg, fill="white", font=myFont)
 
 # show area
-
 center_x, center_y = imwidth / 2, start_y / 2
 msg =  f"Area is {area}, width = {mzn_width}, height = {mzn_height}"
 w, h = img1.textsize(msg, font=myFont)
 img1.text((center_x - w / 2, center_y - h / 2), msg, fill="white", font=myFont)
-
-
 
 img.show()

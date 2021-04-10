@@ -1,0 +1,16 @@
+
+nOptions =  5;
+nCarConfigs =  6;
+
+%lb = [0, 0, 0, 0, 0];
+at_most = [1, 2, 2, 2, 1];
+per_slots = [2, 3, 3, 5, 5];
+demand = [1, 1, 2, 2, 2, 2];
+requires = array2d(CarConfigs, Options, [
+1, 0, 1, 1, 0,
+0, 0, 0, 1, 0,
+0, 1, 0, 0, 1,
+0, 1, 0, 1, 0,
+1, 0, 1, 0, 0,
+1, 1, 0, 0, 0]);
+%options_ordering = [1, 4, 3, 5, 2];
