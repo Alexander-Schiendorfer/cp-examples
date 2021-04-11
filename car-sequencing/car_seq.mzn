@@ -7,7 +7,7 @@ set of int: Options = 1..nOptions;
 set of int: CarConfigs = 1..nCarConfigs;
 
 array[CarConfigs] of int: demand;
-int: nCars = sum(c in CarConfigs) (demand[c]);
+int: nCars = sum(c in CarConfigs) (demand[c]) ;
 array[CarConfigs,Options] of 0..1: requires;
 
  % how many of each car type are required

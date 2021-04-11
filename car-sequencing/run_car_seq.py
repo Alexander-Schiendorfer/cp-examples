@@ -4,7 +4,6 @@
 import math
 from PIL import Image, ImageDraw, ImageFont
 
-
 model_file = "car_seq.mzn"
 
 import minizinc
@@ -52,7 +51,7 @@ inst["demand"] = demand
 inst["requires"] = requires
 
 # for example, first slot should be a config 1
-#inst.add_string("constraint line[1] = 1;")
+#inst.add_string("constraint line[1] = 3;")
 result = inst.solve()
 
 

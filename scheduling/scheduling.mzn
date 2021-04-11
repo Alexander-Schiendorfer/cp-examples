@@ -36,5 +36,3 @@ constraint forall(j in JOBS, t in 1..max(TASKS)-1) (
 % objective 
 var TIME: makespan; 
 constraint makespan = max(j in JOBS, t in TASKS)(end[j,t]);
-
-solve minimize makespan;

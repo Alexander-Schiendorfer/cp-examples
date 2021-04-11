@@ -24,8 +24,7 @@ inst = minizinc.Instance(solver, square_packing_model)
 inst["n"] = n
 inst["widths"] = widths
 inst["heights"] = heights
-#inst.add_string("constraint width >= 10;")
-#inst.add_string("constraint height >= 11; ")
+#inst.add_string("constraint sq_width < sq_height;")
 result = inst.solve()
 
 # coordinates
@@ -41,8 +40,8 @@ if result.status == Status.SATISFIED or result.status == Status.OPTIMAL_SOLUTION
     print("sounds good")
     pos_x, pos_y = result["x"], result["y"]
     area = result["area"]
-    mzn_width = result["width"]
-    mzn_height = result["height"]
+    mzn_width = result["sq_width"]
+    mzn_height = result["sq_height"]
     print(pos_x)
     print(pos_y)
 

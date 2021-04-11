@@ -18,7 +18,7 @@ solver = minizinc.Solver.lookup("gecode")
 
 # jobs
 jobs = enum.Enum("JOBS", ["A", "B", "C"])
-lastT = 14
+lastT = 20
 nTasks = 3;
 dur = [ [5, 2, 3 ], [4, 5, 1], [ 3, 4, 2 ]]
 nMachines = 3
@@ -32,6 +32,9 @@ inst["nTasks"] = nTasks
 inst["dur"] = dur
 inst["taskToMach"] = taskToMach
 inst["nMachines"] = nMachines
+inst.add_string("constraint forall(j in JOBS where j != B) ( start[j,1] >= start[B,1] );")
+inst.add_string("solve minimize makespan;")
+
 result = inst.solve()
 
 
@@ -41,6 +44,7 @@ if result.status == Status.SATISFIED or result.status == Status.OPTIMAL_SOLUTION
     end_times = result["end"]
     print(start_times)
     print(end_times)
+    makespan = result["makespan"]
 
 start_x, start_y = 30, 40
 pixel_unit = 50
@@ -57,8 +61,12 @@ img1 = ImageDraw.Draw(img)
 
 # get a font
 myFont = ImageFont.truetype("arialbd.ttf", 20, )
-#myFont.set_variation_by_name('Bold')
 
+# draw makespan label
+center_x, center_y = imwidth / 2, start_y / 2
+msg =  f"Makespan: {makespan}"
+w, h = img1.textsize(msg, font=myFont)
+img1.text((center_x - w / 2, center_y - h / 2), msg, fill="black", font=myFont)
 
 task_cs = ["#4bacc6", "#f79646", "#9bbb59"]
 lane_cs = ["#a5d5e2", "#fbcaa2", "#cdddac"]
