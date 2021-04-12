@@ -11,6 +11,19 @@ for machine learning (supervised, unsupervised, reinforcement).
 * [MiniZinc-Python](https://minizinc-python.readthedocs.io/en/latest/)
 * [PILlow](https://pillow.readthedocs.io/en/stable/)
 
+## Installation
+Execute the following line (for example in an Anaconda Prompt).
+
+```
+pip install -r requirements.txt
+```
+
+Then enter the directory you're interested in (for example, [scheduling](scheduling)) and execute
+```
+python run_scheduling.py
+```
+An image will appear that visualizes the solution found by MiniZinc.
+
 ## Example Problems
 
 Each example has an associated `.mzn` file (and maybe some `.dzn` data files) and can be executed using the respective `run_xyz.py` Python file.

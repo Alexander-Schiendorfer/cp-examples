@@ -24,7 +24,9 @@ inst = minizinc.Instance(solver, square_packing_model)
 inst["n"] = n
 inst["widths"] = widths
 inst["heights"] = heights
-#inst.add_string("constraint sq_width < sq_height;")
+inst.add_string("constraint sq_width > sq_height;")
+inst.add_string("constraint sq_width >= 10;")
+inst.add_string("constraint sq_height >= 10;")
 result = inst.solve()
 
 # coordinates
