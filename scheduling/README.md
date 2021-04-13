@@ -8,7 +8,7 @@ Given a number of jobs that each have the same number of tasks,
 find start times for them such that 
 * no tasks that require the same machine overlap 
 * tasks within a job respect the given order (precedences, job A2 can start only after A1 has finished)
-* the overall makespane is minimized
+* the overall makespan is minimized
 
 ## Code
 * `run_scheduling.py` runs the problem
