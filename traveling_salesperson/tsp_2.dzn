@@ -1,0 +1,17 @@
+n_locations = 5;
+% ["HQ", "Edeka", "Burger King", "Audi Forum", "Klinikum"]
+loc_names = ["HQ", "Edeka", "Burger King", "Audi Forum", "Klinikum"];
+
+distances = [| 0,  9,  5,  8,  9
+             | 9,  0, 11, 11, 12
+             | 5, 15,  0,  4,  6
+             | 9, 11,  5,  0,  4
+             | 9, 12,  7,  4,  0 |];
+
+durations= [|  0, 14,  8, 15, 16
+            | 12,  0, 17, 17, 17
+            |  9, 15,  0,  8, 11
+            | 14, 17, 10,  0,  7
+            | 16, 17, 11,  7,  0 |];
+        
+max_length = 40;
