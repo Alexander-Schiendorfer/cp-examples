@@ -2,11 +2,14 @@
 
 # importing image object from PIL
 import math
+import os 
 from PIL import Image, ImageDraw, ImageFont
 
 # first let's get the coordinates from MiniZinc
 
 model_file = "scheduling.mzn"
+# make sure the path is set relative to the current file
+model_file = os.path.join(os.path.dirname(__file__), model_file)
 
 import minizinc
 import enum

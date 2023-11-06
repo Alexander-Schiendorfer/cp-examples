@@ -1,2 +1,2 @@
 minizinc
-Pillow
+Pillow==9.4.0

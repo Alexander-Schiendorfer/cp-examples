@@ -1,10 +1,12 @@
 
 
 # importing image object from PIL
-import math
+import math, os
 from PIL import Image, ImageDraw, ImageFont
 
 model_file = "car_seq.mzn"
+# make sure the path is set relative to the current file
+model_file = os.path.join(os.path.dirname(__file__), model_file)
 
 import minizinc
 import datetime
