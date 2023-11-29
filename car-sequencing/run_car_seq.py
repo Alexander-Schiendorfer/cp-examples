@@ -53,7 +53,11 @@ inst["demand"] = demand
 inst["requires"] = requires
 
 # for example, first slot should be a config 1
+#inst.add_string("constraint line[1] = 2;")
 #inst.add_string("constraint line[1] = 3;")
+# minimiere Startzeiten der 4er Konfigurationen
+inst.add_string("solve minimize sum(s in Slots where line[s] = 4)(s * s);")
+
 result = inst.solve()
 
 

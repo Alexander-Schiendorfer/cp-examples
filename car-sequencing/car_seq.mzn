@@ -46,4 +46,4 @@ constraint forall (o in Options,
       ( sum(s_ in s .. (s + per_slots[o]-1) ) (setup[s_,o]) 
         <= at_most[o]);
       
-solve satisfy;
+% solve satisfy;

@@ -14,10 +14,12 @@ import minizinc
 from minizinc import Model, Status
 
 square_packing_model = Model(model_file)
-solver = minizinc.Solver.lookup("chuffed")
+solver = minizinc.Solver.lookup("gecode")
 
 # number of squares we want to pack
 
+# 4 x 3 -> 3
+# 3 x 4 -> 7
 widths  = [5, 6, 4, 3, 2, 4, 3, 1, 2, 1, 7, 3]
 heights = [1, 2, 3, 2, 1, 2, 4, 6, 5, 1, 1, 2]
 n = len(widths)
@@ -26,9 +28,13 @@ inst = minizinc.Instance(solver, square_packing_model)
 inst["n"] = n
 inst["widths"] = widths
 inst["heights"] = heights
-inst.add_string("constraint sq_width > sq_height;")
-inst.add_string("constraint sq_width >= 10;")
-inst.add_string("constraint sq_height >= 10;")
+inst.add_string("constraint sq_width >= sq_height;")
+inst.add_string("constraint sq_width >= 15;")
+inst.add_string("constraint sq_height >= 15;")
+# 4 x 3 -> 3
+# 3 x 4 -> 7
+# abstand in X-Richtung mindestens 2:
+inst.add_string("constraint x[7] + widths[7] + 2 <= x[3] \/ x[3] + widths[3] + 2 <= x[7] ;")
 result = inst.solve()
 
 # coordinates

@@ -35,8 +35,12 @@ inst["nTasks"] = nTasks
 inst["dur"] = dur
 inst["taskToMach"] = taskToMach
 inst["nMachines"] = nMachines
-inst.add_string("constraint forall(j in JOBS where j != B) ( start[j,1] >= start[B,1] );")
-inst.add_string("solve minimize makespan;")
+
+#inst.add_string("constraint forall(j in JOBS where j != B) ( start[j,1] >= start[B,1] );")
+#inst.add_string("constraint forall(j in JOBS where j != B) ( end[B,3] <= start[j,1] );")
+#inst.add_string("constraint forall(j in JOBS where j != B) ( end[B,3] <= start[j,1] );")
+#inst.add_string("solve minimize makespan;")
+inst.add_string("solve minimize 100 * end[B,3] + makespan;")
 
 result = inst.solve()
 

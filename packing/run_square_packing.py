@@ -1,12 +1,14 @@
 
 
 # importing image object from PIL
-import math
+import math, os
 from PIL import Image, ImageDraw, ImageFont
 
 # first let's get the coordinates from MiniZinc
 
 model_file = "square_packing.mzn"
+# make sure the path is set relative to the current file
+model_file = os.path.join(os.path.dirname(__file__), model_file)
 
 import minizinc
 from minizinc import Model, Status
